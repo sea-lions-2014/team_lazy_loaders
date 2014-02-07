@@ -11,4 +11,4 @@ Survey gorilla project - Elliot, Emmanuel, Andy and Matt
 - pull requests reviewed and merged by others
 
 ##Wireframes
-check out the pdf
+<a href="https://github.com/sea-lions-2014/team_lazy_loaders/blob/master/mockup-lazy-loaders.pdf">PDF</a>
