@@ -18,4 +18,5 @@ post '/surveys' do
   question.choices << choice2
   redirect '/'
 end
+
 # make restful
