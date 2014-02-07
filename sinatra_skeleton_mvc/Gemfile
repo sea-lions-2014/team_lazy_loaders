@@ -19,7 +19,7 @@ gem 'rake'
 gem 'shotgun'
 
 # Use BCrypt
-gem "bcrypt-ruby"
+gem 'bcrypt-ruby'
 
 group :test do
   gem 'shoulda-matchers'

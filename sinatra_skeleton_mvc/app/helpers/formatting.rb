@@ -1,13 +1,9 @@
 helpers do
-  # include BCrypt
-  def em(text)
-    "<em>#{text}</em>"
-  end
+  include BCrypt
 
-  def create_user
-    @user = User.new(params)
-    @user.password = params[:password]
-    @user.save!
+  def current_user
+     # TODO: return the current user if there is a user signed in.
+    User.find(session[:id]) if session[:logged_in]
   end
 
   def login
