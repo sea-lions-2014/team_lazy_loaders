@@ -4,11 +4,11 @@ get '/' do
   erb :index
 end
 
-get '/survey/new' do
+get '/surveys/new' do
   erb :new_survey
 end
 
-post '/survey' do
+post '/surveys' do
   survey = Survey.create(name: params[:title])
   question = Question.create(text: params[:question])
   choice1 = Choice.create(text: params[:choice1])

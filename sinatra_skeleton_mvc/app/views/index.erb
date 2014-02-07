@@ -1,1 +1,6 @@
-<% @survey
+<% @survey.each do |survey| %>
+  <%= survey.name %><br>
+  <% survey.questions.each do |question| %>
+    <%= question.text %><br>
+  <% end %>
+<% end %>
