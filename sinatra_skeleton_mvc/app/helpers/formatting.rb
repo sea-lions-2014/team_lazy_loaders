@@ -1,5 +1,23 @@
 helpers do
-  def em(text)
-    "<em>#{text}</em>"
+  include BCrypt
+
+  def current_user
+     # TODO: return the current user if there is a user signed in.
+    User.find(session[:id]) if session[:logged_in]
   end
+
+  # def login
+  #   @user = User.find_by_username(params[:username])
+  #   if @user.password == params[:password]
+  #     session[:logged_in] = true
+  #     session[:message] = nil
+  #     session[:id] = @user.id
+  #     erb :index
+  #   else
+  #     # session[:logged_in] = false
+  #     session[:message] = "Your password and/or username was wrong.  Sucks to be you."
+  #     erb :sign_in
+  #   end
+  # end
+
 end
