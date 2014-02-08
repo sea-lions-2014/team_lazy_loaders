@@ -4,6 +4,6 @@
   <% @survey.questions.each do |question| %>
     <h3><%= question.text %></h3>
     <% question.choices.each do |choice| %>
-      <%= choice.text %><%= choice.count %><br>
+      <%= choice.text %><br><%= choice.count %><br>
     <% end %>
   <% end %>

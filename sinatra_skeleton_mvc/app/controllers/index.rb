@@ -1,4 +1,4 @@
-get '/surveys' do
+get '/' do
   # Look in app/views/index.erb
   @survey = Survey.all
   erb :index
