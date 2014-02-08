@@ -1,5 +1,8 @@
-get '/' do
-  # Look in app/views/index.erb
+enable :sessions
+
+
+
+get '/:id/surveys' do
   @survey = Survey.all
   erb :index
 end
@@ -19,7 +22,6 @@ get '/surveys/:id' do
 end
 
 post '/surveys/:id' do
-  p params
   count_choices(params)
   redirect "/"
 end

@@ -1,14 +1,48 @@
-<h1 class="title">Your Surveys</h1>
 
-<% @survey.each do |survey| %>
-  <div class="survey">
+<div class="container">
+  <h1>Survey Gorilla!</h1>
+  <p>Welcome!</p>
 
-  <h3 class="survey_name"><%= survey.name %></h3><br>
-
-  <% survey.questions.each do |question| %>
-  <div class="question">
-    <%= question.text %><br>
-  </div>
+  <% if session[:message] %>
+  <p> <%= session[:message] %> </p>
   <% end %>
+
+  <% if session[:logged_in] %>
+   <form id="sign-out" method="post" action="/sessions">
+    <input name="_method" type="hidden" value="delete" />
+    <div class="submit"><input type="submit" value="Sign Out"></div>
+  </form>
+
+
+
+  <% else %>
+
+ <form id="sign-up" method="post" action="/users">
+    <label class="label" for="username">Name</label>
+    <input type="text" name="username" placeholder="e.g., joe" >
+    <br>
+
+    <label class="label" for="password">Password</label>
+    <input type="password" name="password" placeholder="6 or more characters">
+    <br>
+
+    <div class="submit"><input type="submit" value="Sign Up"></div>
+  </form>
+
+ <form id="sign-in" method="post" action="/sessions">
+    <label class="label" for="username">Name</label>
+    <input type="text" name="username" placeholder="e.g., joe" >
+    <br>
+
+    <label class="label" for="password">Password</label>
+    <input type="password" name="password" placeholder="6 or more characters">
+    <br>
+
+    <div class="submit"><input type="submit" value="Sign In"></div>
+  </form>
+
+  <% end %>
+
+>>>>>>> d792c8ec4998e1190d021c0135a741355fbfbed3
 </div>
 <% end %>
