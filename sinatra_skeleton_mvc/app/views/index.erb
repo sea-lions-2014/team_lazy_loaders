@@ -3,10 +3,16 @@
   <p>Welcome!</p>
 
   <% if session[:message] %>
-
   <p> <%= session[:message] %> </p>
-
   <% end %>
+
+  <% if session[:logged_in] %>
+   <form id="sign-out" method="post" action="/sessions">
+    <input name="_method" type="hidden" value="delete" />
+    <div class="submit"><input type="submit" value="Sign Out"></div>
+  </form>
+
+  <% else %>
 
  <form id="sign-up" method="post" action="/users">
     <label class="label" for="username">Name</label>
@@ -20,7 +26,6 @@
     <div class="submit"><input type="submit" value="Sign Up"></div>
   </form>
 
-
  <form id="sign-in" method="post" action="/sessions">
     <label class="label" for="username">Name</label>
     <input type="text" name="username" placeholder="e.g., joe" >
@@ -32,5 +37,7 @@
 
     <div class="submit"><input type="submit" value="Sign In"></div>
   </form>
+
+  <% end %>
 
 </div>

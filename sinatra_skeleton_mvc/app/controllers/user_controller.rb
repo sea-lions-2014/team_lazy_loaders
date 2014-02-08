@@ -32,3 +32,10 @@ post '/sessions' do
   login
   redirect '/'
 end
+
+delete '/sessions' do
+  session[:logged_in] = false
+  session[:id] = nil
+  session[:message] = nil
+  erb :index
+end
