@@ -1,7 +1,5 @@
 enable :sessions
 
-
-
 get '/:id/surveys' do
   @survey = Survey.all
   erb :all_surveys
@@ -23,9 +21,9 @@ get '/:id/surveys/:survey_id' do
   erb :survey
 end
 
-post '/:id/surveys/:survey_id' do
+post '/:id/surveys/results' do
   count_choices(params)
-  redirect "/"
+  redirect "/#{params[:id]}/surveys/results"
 end
 
 get '/:id/surveys/:survey_id/results' do

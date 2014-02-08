@@ -38,19 +38,4 @@ helpers do
     end
   end
 
-  # def login
-  #   @user = User.find_by_username(params[:username])
-  #   if @user.password == params[:password]
-  #     session[:logged_in] = true
-  #     session[:message] = nil
-  #     session[:id] = @user.id
-  #     erb :index
-  #   else
-  #     # session[:logged_in] = false
-  #     session[:message] = "Your password and/or username was wrong.  Sucks to be you."
-  #     erb :sign_in
-  #   end
-  # end
-
-
 end
