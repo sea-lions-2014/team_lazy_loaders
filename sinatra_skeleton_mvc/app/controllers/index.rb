@@ -1,4 +1,4 @@
-get '/' do
+get '/surveys' do
   # Look in app/views/index.erb
   @survey = Survey.all
   erb :index
@@ -9,14 +9,22 @@ get '/surveys/new' do
 end
 
 post '/surveys' do
-  survey = Survey.create(name: params[:title])
-  question = Question.create(text: params[:question])
-  choice1 = Choice.create(text: params[:choice1])
-  choice2 = Choice.create(text: params[:choice2])
-  survey.questions << question
-  question.choices << choice1
-  question.choices << choice2
+  params_parser(params)
   redirect '/'
 end
 
-# make restful
+get '/surveys/:id' do
+  @survey = Survey.find(params[:id])
+  erb :survey
+end
+
+post '/surveys/:id' do
+  p params
+  count_choices(params)
+  redirect "/"
+end
+
+get '/surveys/:id/results' do
+  @survey = Survey.find(params[:id])
+  erb :survey_results
+end
