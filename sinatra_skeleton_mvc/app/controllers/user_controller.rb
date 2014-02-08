@@ -13,8 +13,6 @@ post '/users' do
   end
 
   create
-
-  # session[:id] = User.find_by_username(params[:username]).id
   redirect '/'
 end
 
@@ -25,12 +23,13 @@ post '/sessions' do
       session[:logged_in] = true
       session[:message] = "You're signed in"
       session[:id] = @user.id
+      # redirect to the "view all surveys" page
     else
       session[:message] = "Your password and/or username was wrong."
+      redirect '/'
     end
   end
   login
-  redirect '/'
 end
 
 delete '/sessions' do
