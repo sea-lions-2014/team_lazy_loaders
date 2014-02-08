@@ -1,7 +1,7 @@
 <h1><%= @survey.name %></h1>
 
 
-<form action='' method='post'>
+<form action='/<%= @id %>/surveys' method='post'>
   <% @survey.questions.each do |question| %>
     <h3><%= question.text %></h3>
     <% question.choices.each do |choice| %>

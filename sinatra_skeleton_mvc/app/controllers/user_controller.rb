@@ -27,10 +27,10 @@ post '/sessions' do
       session[:logged_in] = true
       session[:message] = "You're signed in"
       session[:id] = @user.id
-      # redirect to the "view all surveys" page
+      redirect "/#{@user.id}/surveys"
     else
       session[:message] = "Your password and/or username was wrong."
-      redirect '/#{@user.id}/surveys'
+      redirect '/'
     end
   end
   login
@@ -43,7 +43,7 @@ delete '/sessions' do
   erb :index
 end
 
-get '/:user_id/surveys'
+get '/:user_id/surveys' do
   user = User.find(params[:user_id])
   @surveys = user.surveys
   erb :all_surveys

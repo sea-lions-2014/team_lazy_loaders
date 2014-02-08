@@ -4,29 +4,31 @@ enable :sessions
 
 get '/:id/surveys' do
   @survey = Survey.all
-  erb :index
+  erb :all_surveys
 end
 
-get '/surveys/new' do
+get '/:id/surveys/new' do
+  @id = params[:id]
   erb :new_survey
 end
 
-post '/surveys' do
+post '/:id/surveys' do
   params_parser(params)
-  redirect '/'
+  redirect "/#{params[:id]}/surveys"
 end
 
-get '/surveys/:id' do
-  @survey = Survey.find(params[:id])
+get '/:id/surveys/:survey_id' do
+  @id = params[:id]
+  @survey = Survey.find(params[:survey_id])
   erb :survey
 end
 
-post '/surveys/:id' do
+post '/:id/surveys/:survey_id' do
   count_choices(params)
   redirect "/"
 end
 
-get '/surveys/:id/results' do
-  @survey = Survey.find(params[:id])
+get '/:id/surveys/:survey_id/results' do
+  @survey = Survey.find(params[:survey_id])
   erb :survey_results
 end

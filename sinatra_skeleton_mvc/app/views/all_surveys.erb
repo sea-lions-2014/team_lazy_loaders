@@ -1,8 +1,8 @@
 
 <h1 class="title">Your Surveys</h1>
-
+<div class="survey">
 <% @survey.each do |survey| %>
-  <div class="survey">
+
 
   <h3 class="survey_name"><%= survey.name %></h3><br>
 
@@ -11,3 +11,5 @@
     <%= question.text %><br>
   </div>
   <% end %>
+</div>
+<% end %>
