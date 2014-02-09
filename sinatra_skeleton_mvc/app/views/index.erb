@@ -9,7 +9,7 @@
   <% if session[:logged_in] %>
    <form id="sign-out" method="post" action="/sessions">
     <input name="_method" type="hidden" value="delete" />
-    <input class="submit" type="submit" value="Sign Out">
+    <input class="submit" id="out-button" type="submit" value="Sign Out">
   </form>
 
 
