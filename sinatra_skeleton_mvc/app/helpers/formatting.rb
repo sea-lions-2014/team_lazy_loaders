@@ -11,8 +11,9 @@ helpers do
   end 
 
   def count_choices(params)
-    params.select {|key| key.match(/\d/) != nil}.each do |choice|
-      choice = Choice.find(choice[0].to_i)
+    params.select {|key| key.match(/\d/) != nil}.each do |question, answer|
+      question = Question.find(question.to_i)
+      choice = question.choices.where(text: answer).first 
       new_count = choice.count + 1
       choice.update_attributes(count: new_count)
     end

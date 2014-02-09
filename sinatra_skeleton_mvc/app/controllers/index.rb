@@ -22,6 +22,7 @@ get '/:id/surveys/:survey_id' do
 end
 
 post '/:id/surveys/:survey_id' do
+  p params
   count_choices(params)
   redirect "/#{session[:id]}/surveys"
 end
