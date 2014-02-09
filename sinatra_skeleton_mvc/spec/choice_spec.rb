@@ -32,4 +32,3 @@ describe Choice do
     end
   end
 end
-
