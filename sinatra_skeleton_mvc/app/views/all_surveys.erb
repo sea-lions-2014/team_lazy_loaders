@@ -1,4 +1,7 @@
 <h1 class="title">Your Surveys</h1>
+
+<a href="/<%= @id %>/surveys/new">Create a new survey!</a>
+<br>
 <% @surveys.each do |survey| %>
 	<div class="survey">
 	  <h2 class="survey_name"><a href="/<%= @id %>/surveys/<%= survey.id %>/results"><%= survey.name %></a></h2>

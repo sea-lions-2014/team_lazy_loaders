@@ -22,7 +22,7 @@ $( document ).ready(function() {
                 .attr("height", h)
                 .attr("id", "svg" + i)
             .append("svg:g")                //makes a group to hold the chart
-                .attr("transform", "translate(" + (r + (i)) + "," + r  + ")")    //move the center of the pie chart from 0, 0 to radius, radius
+                .attr("transform", "translate(" + r + "," + r  + ")")    //move the center of the pie chart from 0, 0 to radius, radius
         var arc = d3.svg.arc()              //creates a path
             .outerRadius(r);
      
@@ -50,6 +50,5 @@ $( document ).ready(function() {
                 d3.select("body").insert("h1", "#svg" + i).text(questions[i])
             }
     $('#results').remove()
-    })
-    
+    })    
 });
