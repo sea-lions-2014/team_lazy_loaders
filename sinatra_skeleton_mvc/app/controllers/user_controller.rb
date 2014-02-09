@@ -13,7 +13,6 @@ post '/users' do
     @user.save!
     session[:message] = "You just created yourself a user!"
   end
-
   create
   redirect '/'
 end
