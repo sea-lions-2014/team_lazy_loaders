@@ -52,6 +52,8 @@ post '/:id/surveys/new/:q_id/new' do
   erb :new_choice, :layout => false
 end
 
-
-
+delete '/:id/surveys/:survey_id' do
+  Survey.find(params[:survey_id]).destroy
+  params[:survey_id]
+end
 

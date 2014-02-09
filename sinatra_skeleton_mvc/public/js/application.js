@@ -43,4 +43,16 @@ $(document).ready(function() {
     })
   })
 
+  $('.delete').on("click", function(e){
+    e.preventDefault()
+    url = window.location.href + "/" + $(this).attr("id")
+    $.ajax({
+      type: 'delete',
+      url: url
+    }).done(function(id){
+      console.log("#survey" + id)
+      $("#survey" + id).remove()
+    })
+  })
+
 })
