@@ -24,7 +24,6 @@ end
 post '/:id/surveys/:survey_id' do
   if validate_survey(params)
     count_choices(params)
-    # redirect "/#{session[:id]}/surveys"
     "ok"
   else
     find_unanswered_questions(params).join(',')
