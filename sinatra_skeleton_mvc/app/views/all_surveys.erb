@@ -1,0 +1,15 @@
+
+<h1 class="title">Your Surveys</h1>
+<div class="survey">
+<% @survey.each do |survey| %>
+
+
+  <h3 class="survey_name"><%= survey.name %></h3><br>
+
+  <% survey.questions.each do |question| %>
+  <div class="question">
+    <%= question.text %><br>
+  </div>
+  <% end %>
+</div>
+<% end %>

@@ -1,7 +1,11 @@
 enable :sessions
 include BCrypt
 
-post '/users' do 
+get '/' do
+  erb :index
+end
+
+post '/users' do
   # User.create(params)
 
   def create
@@ -23,7 +27,7 @@ post '/sessions' do
       session[:logged_in] = true
       session[:message] = "You're signed in"
       session[:id] = @user.id
-      # redirect to the "view all surveys" page
+      redirect "/#{@user.id}/surveys"
     else
       session[:message] = "Your password and/or username was wrong."
       redirect '/'
@@ -37,4 +41,10 @@ delete '/sessions' do
   session[:id] = nil
   session[:message] = nil
   erb :index
+end
+
+get '/:user_id/surveys' do
+  user = User.find(params[:user_id])
+  @surveys = user.surveys
+  erb :all_surveys
 end

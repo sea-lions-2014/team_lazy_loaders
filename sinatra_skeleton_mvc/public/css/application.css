@@ -8,3 +8,19 @@
 th {
   text-align: left;
 }
+
+.survey {
+  text-align: center;
+  border-style: solid;
+  border-color: gray;
+  padding: 1%, 1%;
+}
+
+.question {
+  padding-top: 1%;
+  padding-bottom: 1%;
+}
+
+.body {
+  background-color: lightred;
+}
