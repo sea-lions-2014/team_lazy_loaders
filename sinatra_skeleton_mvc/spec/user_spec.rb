@@ -9,14 +9,6 @@ describe User do
     User.delete_all
   end
 
-  before :all do
-    User.delete_all
-  end
-
-  after :all do
-    User.delete_all
-  end
-
   describe "user creation" do 
     before :all do
       @user = User.new(username:'bob')
