@@ -4,6 +4,7 @@ class CreateChoices < ActiveRecord::Migration
   		t.string :text
   		t.integer :count, :default => 0
   		t.integer :question_id
+  		t.integer :percentage, :default => 0
   	end
   end
 end

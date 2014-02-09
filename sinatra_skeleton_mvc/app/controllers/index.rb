@@ -29,7 +29,7 @@ end
 
 get '/:id/surveys/:survey_id/results' do
   set_user_survey
-  erb :survey_results
+  erb :survey_results, :layout => false
 end
 
 post '/:id/surveys/new/new' do
@@ -39,7 +39,7 @@ end
 
 post '/:id/surveys/new/:q_id/new' do
   @num = params[:num]
-  @q_num = params[:q_num]
+  @q_num = params[:q_id]
   erb :new_choice, :layout => false
 end
 

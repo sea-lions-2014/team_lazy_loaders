@@ -16,7 +16,14 @@ helpers do
       choice = question.choices.where(text: answer).first 
       new_count = choice.count + 1
       choice.update_attributes(count: new_count)
+      question.choices.each {|choice| update_choice_percentage(question, choice)} 
     end
+  end
+
+  def update_choice_percentage(question, choice)
+    total_responses = question.choices.select("count").map {|x| x.count}.inject(:+)
+    new_percentage = (choice.count.to_f / total_responses) * 100
+    choice.update_attributes(percentage: new_percentage)
   end
 
   def params_parser(params)
