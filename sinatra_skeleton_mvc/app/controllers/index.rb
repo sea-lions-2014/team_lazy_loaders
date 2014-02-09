@@ -57,6 +57,3 @@ delete '/:id/surveys/:survey_id' do
   params[:survey_id]
 end
 
-
-
-
