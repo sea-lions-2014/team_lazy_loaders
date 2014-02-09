@@ -1,12 +1,13 @@
 enable :sessions
 
 get '/:id/surveys' do
-  @survey = Survey.all
+  @surveys = Survey.all
+  set_user_survey
   erb :all_surveys
 end
 
 get '/:id/surveys/new' do
-  @id = params[:id]
+  set_user_survey
   erb :new_survey
 end
 
@@ -16,17 +17,31 @@ post '/:id/surveys' do
 end
 
 get '/:id/surveys/:survey_id' do
-  @id = params[:id]
-  @survey = Survey.find(params[:survey_id])
+  set_user_survey
   erb :survey
 end
 
-post '/:id/surveys/results' do
+post '/:id/surveys/:survey_id' do
   count_choices(params)
-  redirect "/#{params[:id]}/surveys/results"
+  redirect "/#{session[:id]}/surveys"
 end
 
 get '/:id/surveys/:survey_id/results' do
-  @survey = Survey.find(params[:survey_id])
+  set_user_survey
   erb :survey_results
 end
+
+post '/:id/surveys/new/new' do
+  @num = params[:num]
+  erb :new_question, :layout => false
+end
+
+post '/:id/surveys/new/:q_id/new' do
+  @num = params[:num]
+  @q_num = params[:q_num]
+  erb :new_choice, :layout => false
+end
+
+
+
+

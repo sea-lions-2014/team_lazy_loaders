@@ -6,8 +6,6 @@ get '/' do
 end
 
 post '/users' do
-  # User.create(params)
-
   def create
     p params
     @user = User.new(params)

@@ -10,10 +10,10 @@ th {
 }
 
 .survey {
-  text-align: center;
   border-style: solid;
   border-color: gray;
-  padding: 1%, 1%;
+  margin: 0 auto;
+  width: 50%
 }
 
 .question {
@@ -21,6 +21,6 @@ th {
   padding-bottom: 1%;
 }
 
-.body {
-  background-color: lightred;
+body {
+  text-align: center;
 }

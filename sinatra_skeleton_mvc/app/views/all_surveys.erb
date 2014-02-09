@@ -1,15 +1,12 @@
-
 <h1 class="title">Your Surveys</h1>
-<div class="survey">
-<% @survey.each do |survey| %>
-
-
-  <h3 class="survey_name"><%= survey.name %></h3><br>
-
-  <% survey.questions.each do |question| %>
-  <div class="question">
-    <%= question.text %><br>
-  </div>
-  <% end %>
-</div>
+<% @surveys.each do |survey| %>
+	<div class="survey">
+	  <h2 class="survey_name"><a href="/<%= @id %>/surveys/<%= survey.id %>/results"><%= survey.name %></a></h2>
+	  <h4>Questions:</h4>
+	  <ul class="question_list">
+	  <% survey.questions.each do |question| %>
+	  <li ><%= question.text %></li>
+	  <% end %>
+	</ul>
+	</div>
 <% end %>

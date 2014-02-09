@@ -1,0 +1,3 @@
+<% (0..(@num.to_i - 1)).each do |num| %>
+	Choice <%= num.to_i + 1 %>: <input type="text" name="<%= @q_num %>choice<%= num %>"/> <br>
+<% end %>
