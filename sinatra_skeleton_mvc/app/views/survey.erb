@@ -3,7 +3,7 @@
   <% @survey.questions.each do |question| %>
     <h3><%= question.text %></h3>
     <% question.choices.each do |choice| %>
-      <%= choice.text %><input type="radio" name="<%= question.id %>" value="<%= choice.text %>"/><br>
+      <%= choice.text %><input type="<%= question.q_type %>" name="<%= question.id %>[]" value="<%= choice.text %>"/><br>
     <% end %>
   <% end %>
   <br>

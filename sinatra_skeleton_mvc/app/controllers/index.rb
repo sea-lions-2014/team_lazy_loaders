@@ -12,7 +12,8 @@ get '/:id/surveys/new' do
 end
 
 post '/:id/surveys' do
-  params_parser(params)
+  p params
+  new_params_parser(params)
   redirect "/#{params[:id]}/surveys"
 end
 
