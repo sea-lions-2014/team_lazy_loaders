@@ -34,9 +34,6 @@ helpers do
 ############################################################################ used for parsing survey results and forms
 
 def validate_survey(params)
-  # {"5"=>"c1", "6"=>"c2", "splat"=>[], "captures"=>["1", "3"], "id"=>"1", "survey_id"=>"3"} correct
-  # {"5"=>"c1", "splat"=>[], "captures"=>["1", "3"], "id"=>"1", "survey_id"=>"3"} incorrect
-  # '/:id/surveys/:survey_id'
   questions = Survey.find(params[:survey_id]).questions.select("text").map { |question| question.text}
   correct_length = questions.length + 4
   params.length == correct_length
@@ -48,6 +45,7 @@ def find_unanswered_questions(params)
   questions - questions_answered
 end
 
+############################################################################ used for validating survey taking
 
   private
 
@@ -60,7 +58,6 @@ end
     questions.each do |question|
       new_question = Question.create(text: question[1]) 
       container.questions << new_question 
-
       get_parameter(params, counter.to_s + 'choice').each do |choice|
         new_choice = Choice.create(text: choice[1]) 
         new_question.choices << new_choice 

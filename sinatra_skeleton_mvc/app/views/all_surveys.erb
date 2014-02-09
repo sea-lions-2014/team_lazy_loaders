@@ -1,3 +1,9 @@
+<% if session[:logged_in] %>
+   <form id="sign-out" method="post" action="/sessions">
+    <input name="_method" type="hidden" value="delete" />
+    <div class="submit"><input type="submit" value="Sign Out"></div>
+  </form>
+<% end %>
 <h1 class="title">Your Surveys</h1>
 
 <a href="/<%= @id %>/surveys/new">Create a new survey!</a>

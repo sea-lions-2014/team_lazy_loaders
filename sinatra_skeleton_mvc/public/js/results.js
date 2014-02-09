@@ -49,6 +49,6 @@ $( document ).ready(function() {
                 .text(function(d, i) { return data[i].label; }); 
                 d3.select("body").insert("h1", "#svg" + i).text(questions[i])
             }
-    $('#results').remove()
+    $('#results').remove() // get rid of the old stuff
     })    
 });
