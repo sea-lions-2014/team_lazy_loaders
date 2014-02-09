@@ -1,6 +1,12 @@
 <% (0..(@num.to_i - 1)).each do |num| %>
 	Question <%= num.to_i + 1 %>: <input type="text" name="question<%= num %>"/> 
-	<input type="text" name="choice_num<%= num %>" id="choice_num<%= num %>" />
+	Choices: <input type="text" name="choice_num<%= num %>" id="choice_num<%= num %>" />
 	<a id="<%= num %>" class="add_choices" href="#">add choices</a>
+Type: <select name="question_type<%= num %>">
+<option value="checkbox">checkbox</option>
+<option value="radio" selected>radio</option>
+<option value="text">text</option>
+</select>
+
 	<div id="more_choices<%= num %>"></div><br>
 <% end %>
