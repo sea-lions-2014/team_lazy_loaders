@@ -6,8 +6,6 @@ get '/' do
 end
 
 post '/users' do
-  # User.create(params)
-
   def create
     p params
     @user = User.new(params)
@@ -41,10 +39,4 @@ delete '/sessions' do
   session[:id] = nil
   session[:message] = nil
   erb :index
-end
-
-get '/:user_id/surveys' do
-  user = User.find(params[:user_id])
-  @surveys = user.surveys
-  erb :all_surveys
 end
