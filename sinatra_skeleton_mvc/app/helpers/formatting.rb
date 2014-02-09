@@ -9,7 +9,7 @@ helpers do
     @id = params[:id] if params[:id]
     @survey = Survey.find(params[:survey_id ]) if params[:survey_id]
   end 
-
+############################################################### used for finding current user and survey
   def count_choices(params)
     params.select {|key| key.match(/\d/) != nil}.each do |question, answer|
       question = Question.find(question.to_i)
@@ -21,7 +21,7 @@ helpers do
   end
 
   def update_choice_percentage(question, choice)
-    total_responses = question.choices.select("count").map {|x| x.count}.inject(:+)
+    total_responses = question.choices.select("count").map {|choice| choice.count}.inject(:+)
     new_percentage = (choice.count.to_f / total_responses) * 100
     choice.update_attributes(percentage: new_percentage)
   end
@@ -31,6 +31,23 @@ helpers do
     counter = 0
     parse_questions(get_parameter(params, "question"), survey)
   end
+############################################################################ used for parsing survey results and forms
+
+def validate_survey(params)
+  # {"5"=>"c1", "6"=>"c2", "splat"=>[], "captures"=>["1", "3"], "id"=>"1", "survey_id"=>"3"} correct
+  # {"5"=>"c1", "splat"=>[], "captures"=>["1", "3"], "id"=>"1", "survey_id"=>"3"} incorrect
+  # '/:id/surveys/:survey_id'
+  questions = Survey.find(params[:survey_id]).questions.select("text").map { |question| question.text}
+  correct_length = questions.length + 4
+  params.length == correct_length
+end
+
+def find_unanswered_questions(params)
+  questions = Survey.find(params[:survey_id]).questions.select("id").map { |question| question.id}.map {|x| Question.find(x.to_i).text}
+  questions_answered = params.keys[0..-5].map {|x| Question.find(x.to_i).text}
+  questions - questions_answered
+end
+
 
   private
 

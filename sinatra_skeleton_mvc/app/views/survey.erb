@@ -1,5 +1,5 @@
 <h1><%= @survey.name %></h1>
-<form action='/<%= @id %>/surveys/<%= @survey.id %>' method='post'>
+<form id='survey' action='/<%= @id %>/surveys/<%= @survey.id %>' method='post'>
   <% @survey.questions.each do |question| %>
     <h3><%= question.text %></h3>
     <% question.choices.each do |choice| %>
@@ -9,4 +9,6 @@
   <br>
   <input type="submit" value="Submit Survey!"/>
 </form>
-
+<br>
+<div id='errors'>
+</div>

@@ -23,4 +23,24 @@ $(document).ready(function() {
       })
     }
   } 
+
+  $('#survey').on("submit", function(e){
+    e.preventDefault();
+    $.ajax({
+      type: 'post',
+      url: document.url,
+      data: $(this).serialize()
+    }).done(function(errors){
+      if (errors == "ok") {
+        $(location).attr('href', '/thankyou')
+      }
+      else {
+        var questions = errors.split(',')
+        for (var i = 0; i < errors.length; i++){
+          $('#errors').append("You did not answer '" + questions[i] + "'")
+        }
+      }
+    })
+  })
+
 })
