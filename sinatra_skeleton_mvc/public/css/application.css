@@ -1,6 +1,6 @@
 .container {
   margin: 20px auto;
-  width: 100%;
+  width: fit-content;
   padding: 0px 20px 20px 20px;
   border: 1px dotted black;
   background-color:rgba(0,0,0,0.8);
@@ -12,7 +12,6 @@
 }
 
 .container input {
-  width:100%;
   margin-bottom: 5%;
 }
 
@@ -66,7 +65,8 @@
   background:-moz-linear-gradient( center top, #5cb811 5%, #77d42a 100% );
   filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#5cb811', endColorstr='#77d42a');
   background-color:#5cb811;
-}.submit:active {
+}
+.submit:active {
   position:relative;
   top:1px;
 }
@@ -115,4 +115,7 @@ html {
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
+}
+
+.container #new-survey {
 }

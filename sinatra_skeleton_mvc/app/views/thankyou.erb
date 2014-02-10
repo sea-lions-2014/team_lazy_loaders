@@ -1,7 +1,9 @@
-<h2> Thank you for taking the survey! </h2>
+<div class="container">
+  <h2> Thank you for taking the survey! </h2>
 
-<a href="/">Click here to sign up or login</a><br>
+  <a href="/">Click here to sign up or login</a><br>
 
-<% if @id %>
-<a href="/<%= @id %>/surveys">Click here to go back to your survey page</a>
-<% end %>
+  <% if @id %>
+  <a href="/<%= @id %>/surveys">Click here to go back to your survey page</a>
+  <% end %>
+</div>
