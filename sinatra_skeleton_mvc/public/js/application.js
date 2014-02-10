@@ -1,4 +1,24 @@
 $(document).ready(function() {
+  
+  function element(num_id, container_id) {
+    this.num_id = num_id;
+    this.container_id = container_id;
+  } 
+
+  element.prototype.add_new = function (url) {
+    num = this.num_id
+    contain = this.container_id
+    $.ajax({
+      url: url,
+      data: {num: $(num).val()},
+      type: "post"
+    }).done(function(new_question){
+      container = $(contain)
+      container.empty()
+      container.append(new_question)
+    })
+  }
+
   $('#questions').on("click", function(e){
     e.preventDefault
     var new_question = new element('#quest_num','#more_qs')
@@ -9,23 +29,22 @@ $(document).ready(function() {
     var new_choice = new element('#choice_num' + this.id, '#more_choices' + this.id) 
     new_choice.add_new("/0/surveys/new/" + this.id + "/new")
   })
-  function element(num_id, container_id) {
-    this.num_id = num_id;
-    this.container_id = container_id;
-  } 
+  
+    function answer_status(body) {
+      this.words = body;
+      this.ok = (body == "ok");
+      this.questions = body.split(','); 
+    }
 
-  element.prototype.add_new = function (url) {
-      num = this.num_id
-      contain = this.container_id
-      $.ajax({
-        url: url,
-        data: {num: $(num).val()},
-        type: "post"
-      }).done(function(new_question){
-        container = $(contain)
-        container.empty()
-        container.append(new_question)
-      })
+    answer_status.prototype.add_errors = function(){
+      $('#errors').empty()
+      for (var i = 0; i < this.questions.length; i++){
+          $('#errors').append("You did not answer '" + this.questions[i] + "'<br>")
+        }
+    }
+
+    answer_status.prototype.thank_user = function(){
+      $(location).attr('href', '/thankyou')
     }
 
   $('#survey').on("submit", function(e){
@@ -34,16 +53,14 @@ $(document).ready(function() {
       type: 'post',
       url: document.url,
       data: $(this).serialize()
-    }).done(function(errors){
-      if (errors == "ok") {
-        $(location).attr('href', '/thankyou')
+    }).done(function(problems){
+      var status = new answer_status(problems)
+      
+      if (status.ok) {
+        status.thank_user()
       }
       else {
-        var questions = errors.split(',')
-        for (var i = 0; i < errors.length; i++){
-          $('#errors').empty()
-          $('#errors').append("You did not answer '" + questions[i] + "'<br>")
-        }
+        status.add_errors()
       }
     })
   })
