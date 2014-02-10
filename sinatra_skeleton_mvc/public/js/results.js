@@ -145,3 +145,9 @@ $( document ).ready(function() {
   })
 
 }); //document ready
+
+// should create a data_view class to encapsulate each type of data view : normal, pie, bar
+// each data_view object should have a body property that contains the charts, and a button property that contains
+// the button, 
+// should define a function on the prototype that is responsible for switching between charts
+// the function should handle all the div and button hiding/displaying
