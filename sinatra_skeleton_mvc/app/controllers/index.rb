@@ -13,7 +13,6 @@ get '/:id/surveys/new' do
 end
 
 post '/:id/surveys' do
-  p params
   new_params_parser(params)
   redirect "/#{params[:id]}/surveys"
 end
@@ -28,7 +27,6 @@ post '/:id/surveys/:survey_id' do
     count_choices(params)
     "ok"
   else
-    p find_unanswered_questions(params).join(',')
     find_unanswered_questions(params).join(',')
   end
 end
