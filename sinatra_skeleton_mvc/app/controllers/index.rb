@@ -1,7 +1,8 @@
 enable :sessions
 
 get '/:id/surveys' do
-  @surveys = Survey.all
+  @user = User.find(params[:id])
+  @surveys = @user.surveys
   set_user_survey
   erb :all_surveys
 end
@@ -12,7 +13,6 @@ get '/:id/surveys/new' do
 end
 
 post '/:id/surveys' do
-  p params
   new_params_parser(params)
   redirect "/#{params[:id]}/surveys"
 end
