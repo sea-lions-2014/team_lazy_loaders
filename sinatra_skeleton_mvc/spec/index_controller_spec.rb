@@ -5,6 +5,11 @@
 #   describe 'get index' do
 #     it 'should render the index page' do
 #       get "/"
+# describe "IndexController (this is a skeleton controller test!)" do
+
+#   describe 'get all bands' do
+#     it 'should see all bands' do
+#       get "/bands"
 #       expect(last_response).to be_ok
 #     end
 #   end
