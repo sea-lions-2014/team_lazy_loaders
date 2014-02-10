@@ -176,3 +176,7 @@ html {
 
 .container #new-survey {
 }
+
+#errors {
+  color: white;
+}
