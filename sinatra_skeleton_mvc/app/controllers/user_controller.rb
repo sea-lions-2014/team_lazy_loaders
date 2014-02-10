@@ -5,7 +5,7 @@ get '/' do
   erb :index
 end
 
-post '/users' do
+post '/users' do 
   def create
     p params
     @user = User.new(params)
@@ -13,7 +13,6 @@ post '/users' do
     @user.save!
     session[:message] = "You just created yourself a user!"
   end
-
   create
   redirect '/'
 end
@@ -40,3 +39,4 @@ delete '/sessions' do
   session[:message] = nil
   erb :index
 end
+
