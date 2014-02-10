@@ -1,4 +1,7 @@
 $( document ).ready(function() {
+    $('#normalize').hide()
+    $('#bar_chart').hide()
+    $('#pie_chart').hide()
     var questions = $.map($('.q_text'), function(v,i){ return v.innerHTML})
     var get_data = function(value_type) {
       return $.map(questions, function(q,index){
@@ -11,7 +14,9 @@ $( document ).ready(function() {
       })
     }
     $('body').on("click", "#visualize", function(e){
-      
+      $('#normalize').show()
+      $('#bar_chart').show()
+      $('#bar').hide()
       var survey = get_data('choice_count')
       for (var i = 0;i < survey.length;i++){
         var w = 300,                        //width
@@ -128,6 +133,7 @@ $( document ).ready(function() {
 
   $('#charts').on("click", "#bar_chart", function(e){
       e.preventDefault;
+      $('#pie_chart').show()
       $('#pie').hide()
       $('#bar').show()
   })

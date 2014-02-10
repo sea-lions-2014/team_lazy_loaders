@@ -42,6 +42,7 @@ get '/:id/surveys/:survey_id/results' do
 end
 
 post '/:id/surveys/new/new' do
+  p params
   @num = params[:num]
   erb :new_question, :layout => false
 end

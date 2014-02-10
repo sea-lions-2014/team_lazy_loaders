@@ -29,11 +29,6 @@ helpers do
     choice.update_attributes(percentage: new_percentage)
   end
 
-  # def params_parser(params)
-  #   survey = Survey.create(name: params[:title], user_id: session[:id]) 
-  #   parse_questions(get_parameter(params, "question"), survey)
-  # end
-
   def new_params_parser(params)
     survey = Survey.create(name: params[:title], user_id: session[:id])
     questions = params.select{|x| x.include?("question")}.values.each_slice(2).to_a
@@ -43,8 +38,9 @@ helpers do
       survey.questions << new_question
       get_parameter(params, counter.to_s + 'choice').each do |choice|
         new_choice = Choice.create(text: choice[1]) 
-        new_question.choices << new_choice 
+        new_question.choices << new_choice
       end
+      counter += 1 
     end
   end
 ############################################################################ used for parsing survey results and forms
@@ -66,20 +62,6 @@ helpers do
   def get_parameter(params, matcher)
     params.select {|key| key.include?(matcher)}
   end
-
-  # def parse_questions(questions, container)
-  #   counter = 0
-  #   questions.each do |question|
-  #     new_question = Question.create(text: question[1]) 
-  #     container.questions << new_question 
-
-  #     get_parameter(params, counter.to_s + 'choice').each do |choice|
-  #       new_choice = Choice.create(text: choice[1]) 
-  #       new_question.choices << new_choice 
-  #     end
-  #     counter += 1
-  #   end
-  # end
 
 end
 
