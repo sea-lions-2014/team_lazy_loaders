@@ -6,8 +6,8 @@ $(document).ready(function() {
   } 
 
   element.prototype.add_new = function (url) {
-    num = this.num_id
-    contain = this.container_id
+    var num = this.num_id
+    var contain = this.container_id
     $.ajax({
       url: url,
       data: {num: $(num).val()},
@@ -55,13 +55,8 @@ $(document).ready(function() {
       data: $(this).serialize()
     }).done(function(problems){
       var status = new answer_status(problems)
-      
-      if (status.ok) {
-        status.thank_user()
-      }
-      else {
-        status.add_errors()
-      }
+      if (status.ok) { status.thank_user() }
+      else { status.add_errors() }
     })
   })
 
@@ -72,7 +67,6 @@ $(document).ready(function() {
       type: 'delete',
       url: url
     }).done(function(id){
-      console.log("#survey" + id)
       $("#survey" + id).remove()
     })
   })
