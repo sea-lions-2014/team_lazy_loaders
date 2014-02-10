@@ -10,19 +10,23 @@ $(document).ready(function() {
     new_choice.add_new("/0/surveys/new/" + this.id + "/new")
   })
   function element(num_id, container_id) {
-    this.add_new = add_new; 
-    function add_new(url) {
+    this.num_id = num_id;
+    this.container_id = container_id;
+  } 
+
+  element.prototype.add_new = function (url) {
+      num = this.num_id
+      contain = this.container_id
       $.ajax({
         url: url,
-        data: {num: $(num_id).val()},
+        data: {num: $(num).val()},
         type: "post"
       }).done(function(new_question){
-        container = $(container_id)
+        container = $(contain)
         container.empty()
         container.append(new_question)
       })
     }
-  } 
 
   $('#survey').on("submit", function(e){
     e.preventDefault();
