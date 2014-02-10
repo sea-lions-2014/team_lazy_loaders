@@ -36,7 +36,8 @@ $(document).ready(function() {
       }
       else {
         var questions = errors.split(',')
-        for (var i = 0; i < questions.length; i++){
+        for (var i = 0; i < errors.length; i++){
+          $('#errors').empty()
           $('#errors').append("You did not answer '" + questions[i] + "'<br>")
         }
       }

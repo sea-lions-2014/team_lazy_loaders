@@ -1,6 +1,6 @@
 <div class="container">
   <h1>Survey Gorilla!</h1>
-  <p>Welcome!</p>
+  <h3>Welcome!</h3>
 
   <% if session[:message] %>
   <p> <%= session[:message] %> </p>
@@ -9,13 +9,13 @@
   <% if session[:logged_in] %>
    <form id="sign-out" method="post" action="/sessions">
     <input name="_method" type="hidden" value="delete" />
-    <div class="submit"><input type="submit" value="Sign Out"></div>
+    <input class="submit" id="out-button" type="submit" value="Sign Out">
   </form>
 
 
 
   <% else %>
-
+<div class="sign-up-div">
  <form id="sign-up" method="post" action="/users">
     <label class="label" for="username">Name</label>
     <input type="text" name="username" placeholder="e.g., joe" >
@@ -25,9 +25,11 @@
     <input type="password" name="password" placeholder="6 or more characters">
     <br>
 
-    <div class="submit"><input type="submit" value="Sign Up"></div>
+    <input class="submit" type="submit" value="Sign Up">
   </form>
+</div>
 
+<div class="sign-in-div">
  <form id="sign-in" method="post" action="/sessions">
     <label class="label" for="username">Name</label>
     <input type="text" name="username" placeholder="e.g., joe" >
@@ -37,8 +39,9 @@
     <input type="password" name="password" placeholder="6 or more characters">
     <br>
 
-    <div class="submit"><input type="submit" value="Sign In"></div>
+    <input class="submit" type="submit" value="Sign In">
   </form>
+</div>
 
   <% end %>
 

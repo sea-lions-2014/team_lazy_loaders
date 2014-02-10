@@ -1,14 +1,16 @@
-<h1><%= @survey.name %></h1>
-<form id='survey' action='/<%= @id %>/surveys/<%= @survey.id %>' method='post'>
-  <% @survey.questions.each do |question| %>
-    <h3><%= question.text %></h3>
-    <% question.choices.each do |choice| %>
-      <%= choice.text %><input type="<%= question.q_type %>" name="<%= question.id %>[]" value="<%= choice.text %>"/><br>
+<div class="container">
+  <h1><%= @survey.name %></h1>
+  <form id='survey' action='/<%= @id %>/surveys/<%= @survey.id %>' method='post'>
+    <% @survey.questions.each do |question| %>
+      <h3><%= question.text %></h3>
+      <% question.choices.each do |choice| %>
+        <%= choice.text %><input type="<%= question.q_type %>" name="<%= question.id %>[]" value="<%= choice.text %>"/><br>
+      <% end %>
     <% end %>
-  <% end %>
+    <br>
+    <input type="submit" value="Submit Survey!"/>
+  </form>
   <br>
-  <input type="submit" value="Submit Survey!"/>
-</form>
-<br>
+</div>
 <div id='errors'>
 </div>
