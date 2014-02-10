@@ -1,10 +1,10 @@
-require 'spec_helper'
+# require 'spec_helper'
 
-# describe "IndexController (this is a skeleton controller test!)" do
+# describe "User Controller" do
 
-#   describe 'get all bands' do
-#     it 'should see all bands' do
-#       get "/bands"
+#   describe 'get index' do
+#     it 'should render the index page' do
+#       get "/"
 #       expect(last_response).to be_ok
 #     end
 #   end
