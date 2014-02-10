@@ -38,8 +38,9 @@ helpers do
       survey.questions << new_question
       get_parameter(params, counter.to_s + 'choice').each do |choice|
         new_choice = Choice.create(text: choice[1]) 
-        new_question.choices << new_choice 
+        new_question.choices << new_choice
       end
+      counter += 1 
     end
   end
 ############################################################################ used for parsing survey results and forms
