@@ -13,7 +13,7 @@ helpers do
   def count_choices(params)
     params.select {|key| key.match(/\d/) != nil}.each do |question, answer|
       question = Question.find(question.to_i)
-      
+        
       answer.each do |ans|
         choice = question.choices.where(text: ans).first 
         new_count = choice.count + 1

@@ -1,7 +1,8 @@
 enable :sessions
 
 get '/:id/surveys' do
-  @surveys = Survey.all
+  @user = User.find(params[:id])
+  @surveys = @user.surveys
   set_user_survey
   erb :all_surveys
 end
@@ -27,6 +28,7 @@ post '/:id/surveys/:survey_id' do
     count_choices(params)
     "ok"
   else
+    p find_unanswered_questions(params).join(',')
     find_unanswered_questions(params).join(',')
   end
 end

@@ -10,19 +10,34 @@
 </head>
 <body>
 <h1><%= @survey.name %></h1>
+
  <div id="results">
- <button id="visualize">Visualize!</button>
+   <button id="visualize">Visualize!</button>
  <% n = 1 %>	
   <% @survey.questions.each do |question| %>
     <h3 class="q_text"><%= question.text %></h3>
    <% c = 1 %>
     <% question.choices.each do |choice| %>
       <h4 class="choice_text<%= n %>"><%= choice.text %></h4>
-      <p class="<%= c %>choice_count<%= n %>"><%= choice.percentage %></p>
+      Percentage: <p class="<%= c %>choice_count<%= n %>"><%= choice.percentage %></p>
+      Count: <p class="<%= c %>choice_num<%= n %>"><%= choice.count %></p>
       <% c += 1 %>
     <% end %>
     <% n += 1 %>
   <% end %>
+ </div>
+ <div id="charts">
+  <button id="normalize">Normalize</button>
+ 
+   <div id="pie">
+    <br>
+    <button id="bar_chart">Bar Chart</button>
+   </div>
+   
+   <div id="bar">
+    <br>
+    <button id="pie_chart">Pie Chart</button>
+   </div>
  </div>
 </body>
 </html>
