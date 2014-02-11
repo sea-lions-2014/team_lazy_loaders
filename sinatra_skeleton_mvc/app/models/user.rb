@@ -5,6 +5,8 @@ class User < ActiveRecord::Base
   has_many :surveys
   validates :username, uniqueness: true
   
+  #CR include authentication logic here
+  
   def password
     @password ||= Password.new(password_hash)
   end

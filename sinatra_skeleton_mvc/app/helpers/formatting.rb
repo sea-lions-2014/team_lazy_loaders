@@ -1,4 +1,8 @@
 helpers do
+  #CR - why do you include BCrypt here?
+
+  # CR - Make separate files for helpers of different resources
+  
   include BCrypt
 
   def current_user 

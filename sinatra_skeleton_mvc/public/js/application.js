@@ -1,5 +1,6 @@
 $(document).ready(function() {
   $('#questions').on("click", function(e){
+    // CR preventDefault is a method use ()
     e.preventDefault
     var new_question = new element('#quest_num','#more_qs')
     new_question.add_new('/0/surveys/new/new')
@@ -9,6 +10,7 @@ $(document).ready(function() {
     var new_choice = new element('#choice_num' + this.id, '#more_choices' + this.id) 
     new_choice.add_new("/0/surveys/new/" + this.id + "/new")
   })
+
   function element(num_id, container_id) {
     this.num_id = num_id;
     this.container_id = container_id;
@@ -17,6 +19,7 @@ $(document).ready(function() {
   element.prototype.add_new = function (url) {
       num = this.num_id
       contain = this.container_id
+      console.log("CR: add new")
       $.ajax({
         url: url,
         data: {num: $(num).val()},

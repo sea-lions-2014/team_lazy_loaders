@@ -10,6 +10,7 @@
 	  <p>Send to your friends! <input type="text" value="localhost:9393/<%= @id %>/surveys/<%= survey.id %>"/></p>
 	  <h4>Questions:</h4>
 	  <ul class="question_list">
+	  	<!-- CR use include to avoid Lazy Loading -->
 	  <% survey.questions.each do |question| %>
 	  <li ><p><%= question.text %></p></li>
 	  <% end %>

@@ -1,6 +1,8 @@
 enable :sessions
 
+#CR RESTful route is '/users/:id/surveys'
 get '/:id/surveys' do
+
   @user = User.find(params[:id])
   @surveys = @user.surveys
   set_user_survey
